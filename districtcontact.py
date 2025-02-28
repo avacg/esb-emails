@@ -62,7 +62,7 @@ st.markdown(
         margin-bottom: 15px;  /* Reduced margin */
     }
     .description-container {
-        background-color: #ffe0a1;
+        background-color: #ffe7b8;
         color: #0c343d;
         padding: 15px;
         border-radius: 10px;
@@ -70,6 +70,16 @@ st.markdown(
         margin-bottom: 20px;  /* Adjusted margin */
         font-size: 18px;
     }
+    .description-green-container {
+        background-color: ##d4f5d2;
+        color: #0c343d;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;  /* Adjusted margin */
+        font-size: 18px;
+    }
+    
     .email-button-container {
         text-align: center;
         margin: 20px 0;  /* Adjusted margin */
@@ -139,7 +149,7 @@ with st.container():
 with st.container():
     st.markdown(
         """
-        <div class="description-container">
+        <div class="description-green-container">
             Use this tool to send your district a pre-written message supporting electric school buses!
         </div>
         """,
