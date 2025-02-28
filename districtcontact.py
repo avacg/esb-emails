@@ -149,7 +149,7 @@ with st.container():
 with st.container():
     st.markdown(
         """
-        <div class="description-green-container">
+        <div class="description-container">
             Use this tool to send your district a pre-written message supporting electric school buses!
         </div>
         """,
