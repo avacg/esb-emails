@@ -194,8 +194,7 @@ with st.container():
     st.markdown(
         """ <br> <br> <br> <br>
         <div class="logo-container">
-            <st.image("esb-emails\Logo 1_Horizontal (1).jpg", class="logo-large" alt="HPHC Logo">
-        </div>
+            st.image("esb-emails/Logo 1_Horizontal (1).jpg", caption="HPHC Logo", use_column_width=True
         """,
         unsafe_allow_html=True
     )
