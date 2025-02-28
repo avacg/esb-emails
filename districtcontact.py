@@ -193,7 +193,7 @@ with st.container():
     st.markdown(
         """ <br> <br>
         <div class="logo-container">
-            <img src="https://iili.io/32FWfXs.png" alt="HPHC Logo">
+            <img src="https://iili.io/32FWfXs.png" class="logo-large" alt="HPHC Logo">
         </div>
         """,
         unsafe_allow_html=True
