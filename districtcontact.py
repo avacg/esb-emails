@@ -100,13 +100,13 @@ st.markdown(
     }
     .logo-large {
         width: 100%;
-        max-width: 800px;
+        max-width: 600px;
         height: auto;
         margin: 0 auto;
         display: block;
     }
     .logo-regular1 {
-        height: 70px !important;
+        height: 50px !important;
         width: auto !important;
     }
 
