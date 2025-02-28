@@ -192,7 +192,7 @@ with st.container():
 # Add logos at the bottom
 with st.container():
     st.markdown(
-        """ <br> <br>
+        """ <br> <br> <br> <br>
         <div class="logo-container">
             <img src="https://iili.io/32FWfXs.png" class="logo-large" alt="HPHC Logo">
         </div>
