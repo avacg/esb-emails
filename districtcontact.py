@@ -36,6 +36,7 @@ if selected_district:
     if not row.empty:
         mailto_link = row['Having trouble with the link on the left? Paste this into your browser instead.'].iloc[0]
         link_text = row['Link Text'].iloc[0]
-        st.markdown(f'[**{link_text}**]({mailto_link})', unsafe_allow_html=True)
+        # Use st.markdown with unsafe_allow_html=True to render the hyperlink
+        st.markdown(f'<a href="{mailto_link}" target="_blank">{link_text}</a>', unsafe_allow_html=True)
     else:
         st.write("District not found.")
