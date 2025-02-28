@@ -70,15 +70,6 @@ st.markdown(
         margin-bottom: 20px;  /* Adjusted margin */
         font-size: 18px;
     }
-    .description-green-container {
-        background-color: #d4f5d2;
-        color: #0c343d;
-        padding: 15px;
-        border-radius: 10px;
-        text-align: center;
-        margin-bottom: 20px;  /* Adjusted margin */
-        font-size: 18px;
-    }
     
     .email-button-container {
         text-align: center;
@@ -160,7 +151,7 @@ with st.container():
 with st.container():
     st.markdown(
         """
-        <div class="description-green-container">
+        <div class="description-container">
             🖱️ 1. Select your school or district from the dropdown menu below.🖱️<br>
             🔗 2. Click the custom email link that's generated for you.🔗<br>
             ✉️ 3. Send the email to your district! ✉️
@@ -204,15 +195,6 @@ with st.container():
         """ <br> <br>
         <div class="logo-container">
             <img src="https://iili.io/32FWfXs.png" class="logo-large" alt="HPHC Logo">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-with st.container():
-    st.markdown(
-        """
-        <div class="logo-container">
-            <img src="https://iili.io/32Hqgvj.png" class="logo-regular1" alt="MN350 Logo">
         </div>
         """,
         unsafe_allow_html=True
