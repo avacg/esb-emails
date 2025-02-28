@@ -160,7 +160,7 @@ with st.container():
 with st.container():
     st.markdown(
         """
-        <div class="description-container">
+        <div class="description-green-container">
             🖱️ 1. Select your school or district from the dropdown menu below.🖱️<br>
             🔗 2. Click the custom email link that's generated for you.🔗<br>
             ✉️ 3. Send the email to your district! ✉️
