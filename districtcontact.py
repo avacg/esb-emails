@@ -62,7 +62,7 @@ st.markdown(
         margin-bottom: 15px;  /* Reduced margin */
     }
     .description-container {
-        background-color: #ffe7b8;
+        background-color: #ffeac2;
         color: #0c343d;
         padding: 15px;
         border-radius: 10px;
@@ -71,7 +71,7 @@ st.markdown(
         font-size: 18px;
     }
     .description-green-container {
-        background-color: ##d4f5d2;
+        background-color: #d4f5d2;
         color: #0c343d;
         padding: 15px;
         border-radius: 10px;
