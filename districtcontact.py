@@ -99,9 +99,8 @@ st.markdown(
         flex-wrap: wrap;
     }
     .logo-large {
-        width: 100%;
-        max-width: 600px;
-        height: auto;
+        height: 70px !important;
+        width: auto !important;
         margin: 0 auto;
         display: block;
     }
