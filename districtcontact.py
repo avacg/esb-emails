@@ -99,7 +99,7 @@ st.markdown(
         flex-wrap: wrap;
     }
     .logo-large {
-        height: 150px !important;
+        height: 115px !important;
         width: auto !important;
         margin: 0 auto;
         display: block;
