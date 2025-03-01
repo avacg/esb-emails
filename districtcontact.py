@@ -165,7 +165,7 @@ with st.container():
     st.markdown('<div class="content-container">', unsafe_allow_html=True)
     
     # Create a dropdown menu
-    default_text = "Choose an option"
+    default_text = "Choose or type your school district"
     options = [default_text] + df['School or District'].tolist()
     
     selected_district = st.selectbox(
