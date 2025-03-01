@@ -126,7 +126,7 @@ with st.container():
         """
         <div class="header-container">
             <div class="header-image-container">
-                <img src="https://iili.io/32d0oGt.png" class="header-logo" alt="MN Advocates for Electric School Buses Logo">
+                <img src="https://freeimage.host/i/32qu6KX" class="header-logo" alt="MN Advocates for Electric School Buses Logo">
             </div>
             <div class="title-container">
                 <h1>Electric School Bus Outreach Tool</h1>
@@ -192,9 +192,10 @@ with st.container():
 # Add logos at the bottom
 with st.container():
     st.markdown(
-        """ <br> <br> <br> <br>
+        """ <br> <br>
         <div class="logo-container">
-            st.image("esb-emails/Logo 1_Horizontal (1).jpg", caption="HPHC Logo", use_column_width=True
+            <img src="https://freeimage.host/i/32qurPt" class="logo-large" alt="HPHC Logo">
+        </div>
         """,
         unsafe_allow_html=True
     )
