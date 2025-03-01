@@ -126,7 +126,7 @@ with st.container():
         """
         <div class="header-container">
             <div class="header-image-container">
-                <img src="https://freeimage.host/i/32qu6KX" class="header-logo" alt="MN Advocates for Electric School Buses Logo">
+                <img src="https://iili.io/32qu6KX.png" class="header-logo" alt="MN Advocates for Electric School Buses Logo">
             </div>
             <div class="title-container">
                 <h1>Electric School Bus Outreach Tool</h1>
@@ -194,7 +194,7 @@ with st.container():
     st.markdown(
         """ <br> <br>
         <div class="logo-container">
-            <img src="https://freeimage.host/i/32qurPt" class="logo-large" alt="HPHC Logo">
+            <img src="https://iili.io/32qurPt.jpg" class="logo-large" alt="HPHC Logo">
         </div>
         """,
         unsafe_allow_html=True
