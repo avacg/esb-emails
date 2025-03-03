@@ -120,15 +120,6 @@ st.markdown(
     unsafe_allow_html=True
 )
     
-with st.container():
-    st.markdown(
-        """
-        <div class="description-container">
-            🚌🚌🚌
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
     
 # Page header with logo above title
 with st.container():
@@ -162,6 +153,16 @@ with st.container():
             🖱️ 1. Select your school or district from the dropdown menu below.🖱️<br>
             🔗 2. Click the custom email link that's generated for you.🔗<br>
             ✉️ 3. Send the email to your district! ✉️
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+with st.container():
+    st.markdown(
+        """
+        <div class="description-container">
+            🚌🚌🚌
         </div>
         """,
         unsafe_allow_html=True
