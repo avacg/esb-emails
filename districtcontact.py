@@ -41,11 +41,6 @@ st.markdown(
         margin-bottom: 20px;  /* Reduced margin */
         width: 100%;
     }
-    .header-image-container {
-        width: 100%;
-        margin: 0 auto;
-        margin-bottom: 0px;
-    }
     .header-logo {
         width: 100%;
         height: auto;
@@ -99,29 +94,13 @@ st.markdown(
         margin-top: 30px;  /* Adjusted margin */
         flex-wrap: wrap;
     }
-    .logo-large {
-        height: 115px !important;
-        width: auto !important;
-        margin: 0 auto;
-        display: block;
-    }
-    .logo-regular1 {
-        height: 50px !important;
-        width: auto !important;
-    }
-
-    }
-    .logo-regular2 {
-        height: 100px !important;
-        width: auto !important;
-    }
     </style>
     """,
     unsafe_allow_html=True
 )
     
     
-# Page header with logo above title
+# Page header
 with st.container():
     st.markdown(
         """
