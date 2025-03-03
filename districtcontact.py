@@ -128,7 +128,8 @@ with st.container():
         </div>
         """,
         unsafe_allow_html=True
-
+    )
+    
 # Page header with logo above title
 with st.container():
     st.markdown(
