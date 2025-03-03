@@ -134,16 +134,6 @@ with st.container():
         unsafe_allow_html=True
     )
 
-with st.container():
-    st.markdown(
-        """
-        <div class="description-container">
-            🚌🚌🚌
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
 # First description
 with st.container():
     st.markdown(
@@ -196,24 +186,6 @@ with st.container():
             )
     
     st.markdown('</div>', unsafe_allow_html=True)  # Close content container
-with st.container():
-    st.markdown(
-        """
-        <div class="description-container">
-            🚌🚌🚌
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-with st.container():
-    st.markdown(
-        """
-        <div class="description-container">
-            🚌🚌🚌
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
 with st.container():
     st.markdown(
         """
