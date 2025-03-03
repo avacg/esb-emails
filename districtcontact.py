@@ -119,6 +119,15 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+    
+with st.container():
+    st.markdown(
+        """
+        <div class="description-container">
+            🚌🚌🚌
+        </div>
+        """,
+        unsafe_allow_html=True
 
 # Page header with logo above title
 with st.container():
@@ -185,3 +194,12 @@ with st.container():
             )
     
     st.markdown('</div>', unsafe_allow_html=True)  # Close content container
+with st.container():
+    st.markdown(
+        """
+        <div class="description-container">
+            🚌🚌🚌
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
