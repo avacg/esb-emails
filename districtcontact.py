@@ -40,7 +40,7 @@ st.markdown(
         align-items: center;
         gap: 20px;
         margin-top: 0px;
-        margin-bottom: 20px;  /* Reduced margin */
+        margin-bottom: 20px;
         width: 100%;
     }
     .header-logo {
@@ -56,7 +56,7 @@ st.markdown(
         padding: 15px;
         border-radius: 10px;
         text-align: center;
-        margin-bottom: 15px;  /* Reduced margin */
+        margin-bottom: 15px;
     }
     .description-container {
         background-color: #ffeac2;
@@ -64,12 +64,12 @@ st.markdown(
         padding: 15px;
         border-radius: 10px;
         text-align: center;
-        margin-bottom: 20px;  /* Adjusted margin */
+        margin-bottom: 20px;
         font-size: 18px;
     }
     .email-button-container {
         text-align: center;
-        margin: 20px 0;  /* Adjusted margin */
+        margin: 20px 0;
         font-size: 18px;
     }
     .email-button {
@@ -82,7 +82,7 @@ st.markdown(
         font-weight: bold;
         font-size: 18px;
         transition: transform 0.2s;
-        margin-bottom: 20px;  /* Adjusted margin */
+        margin-bottom: 20px;
     }
     .email-button:hover {
         transform: scale(1.05);
@@ -92,7 +92,7 @@ st.markdown(
         justify-content: center;
         align-items: center;
         gap: 30px;
-        margin-top: 30px;  /* Adjusted margin */
+        margin-top: 30px;
         flex-wrap: wrap;
     }
     .custom-template {
@@ -125,6 +125,7 @@ st.markdown(
 copy_js = """
 <script>
 function copyToClipboard(text) {
+    // Create a temporary textarea element
     const textarea = document.createElement("textarea");
     textarea.value = text;
     document.body.appendChild(textarea);
@@ -179,11 +180,11 @@ with st.container():
 # Main content container
 with st.container():
     st.markdown('<div class="content-container">', unsafe_allow_html=True)
-
+    
     # Create a dropdown menu
     default_text = "Choose or type your school district"
     options = [default_text] + df['School or District'].tolist()
-
+    
     selected_district = st.selectbox(
         "Select your school or district:",
         options,
@@ -197,7 +198,7 @@ with st.container():
             mailto_link = row['Having trouble with the link on the left? Paste this into your browser instead.'].iloc[0]
             link_text = row['Link Text'].iloc[0]
             custom_template = row['Custom Email Template'].iloc[0]  # Assuming column I is named 'Custom Email Template'
-
+            
             # Display the email button
             st.markdown(
                 f'<div class="email-button-container">'
@@ -205,7 +206,7 @@ with st.container():
                 '</div>',
                 unsafe_allow_html=True
             )
-
+            
             # Display the custom email template section
             st.markdown(
                 """
@@ -216,20 +217,21 @@ with st.container():
                 unsafe_allow_html=True
             )
 
-            # Properly Escape the email template for JavaScript
-            escaped_template = custom_template.replace('\n', '\\\\n').replace('\r', '\\\\r').replace('"', '\\"').replace("'", "\\'")
+            # Escape the email template for JavaScript
+            escaped_template = custom_template.replace("`", "\\`").replace("\n", "\\n").replace('"', '\\"')
 
-            # Add a "Copy email template" button
+            # Add a "Copy email template" button with corrected single quotes
             st.markdown(
-                f'<button class="copy-button" onclick="copyToClipboard(\\"{escaped_template}\\")">Copy email template</button>',
+                f'<button class="copy-button" onclick="copyToClipboard(\'{escaped_template}\')">Copy email template</button>',
                 unsafe_allow_html=True
             )
 
             # Display the custom email template
-            st.markdownf'<div class="custom-template">{custom_template}</div>',
+            st.markdown(
+                f'<div class="custom-template">{custom_template}</div>',
                 unsafe_allow_html=True
             )
-
+    
     st.markdown('</div>', unsafe_allow_html=True)  # Close content container
 
 # Footer
