@@ -217,11 +217,11 @@ with st.container():
             )
 
             # Properly Escape the email template for JavaScript
-            escaped_template = json.dumps(custom_template) # use json.dumps to handle all special characters correctly.
+            escaped_template = custom_template.replace('\n', '\\n').replace('\r', '\\r').replace('"', '\\"').replace("'", "\\'")
 
             # Add a "Copy email template" button
             st.markdown(
-                f'<button class="copy-button" onclick="copyToClipboard({escaped_template})">Copy email template</button>',
+                f'<button class="copy-button" onclick="copyToClipboard(\\"{escaped_template}\\")">Copy email template</button>',
                 unsafe_allow_html=True
             )
 
@@ -231,4 +231,14 @@ with st.container():
                 unsafe_allow_html=True
             )
 
-    st.markdown('</div>', unsafe_allow_html=True)  # Close
+    st.markdown('</div>', unsafe_allow_html=True)  # Close content container
+
+# Footer
+with st.container():
+    st.markdown(
+        """
+        <div class="description-container">
+            🚌🚌🚌
+        </div>
+        """,
+        unsafe_allow
