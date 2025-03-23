@@ -66,7 +66,6 @@ st.markdown(
         margin-bottom: 20px;  /* Adjusted margin */
         font-size: 18px;
     }
-    
     .email-button-container {
         text-align: center;
         margin: 20px 0;  /* Adjusted margin */
@@ -103,12 +102,40 @@ st.markdown(
         font-family: monospace;
         white-space: pre-wrap;
     }
+    .copy-button {
+        background-color: #0c343d;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .copy-button:hover {
+        background-color: #0a2a32;
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
-    
-    
+
+# JavaScript for copying to clipboard
+copy_js = """
+<script>
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        alert('Email template copied to clipboard!');
+    }, function(err) {
+        alert('Failed to copy: ' + err);
+    });
+}
+</script>
+"""
+
+# Inject JavaScript into the Streamlit app
+st.markdown(copy_js, unsafe_allow_html=True)
+
 # Page header
 with st.container():
     st.markdown(
@@ -185,6 +212,14 @@ with st.container():
                 """,
                 unsafe_allow_html=True
             )
+
+            # Add a "Copy email template" button
+            st.markdown(
+                f'<button class="copy-button" onclick="copyToClipboard(`{custom_template}`)">Copy email template</button>',
+                unsafe_allow_html=True
+            )
+
+            # Display the custom email template
             st.markdown(
                 f'<div class="custom-template">{custom_template}</div>',
                 unsafe_allow_html=True
