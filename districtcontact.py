@@ -121,18 +121,25 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# JavaScript for copying to clipboard
+# JavaScript for copying the template from the displayed element
 copy_js = """
 <script>
-function copyToClipboard(text) {
-    // Create a temporary textarea element
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-    alert("Email template copied to clipboard!");
+function copyTemplate() {
+    // Find the element containing the custom template text
+    const templateElement = document.querySelector('.custom-template');
+    if (templateElement) {
+        const text = templateElement.innerText;
+        // Create a temporary textarea element to facilitate copying
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        alert("Email template copied to clipboard!");
+    } else {
+        alert("Template not found!");
+    }
 }
 </script>
 """
@@ -207,7 +214,7 @@ with st.container():
                 unsafe_allow_html=True
             )
             
-            # Display the custom email template section
+            # Display the custom email template section explanation
             st.markdown(
                 """
                 <div class="description-container">
@@ -217,16 +224,13 @@ with st.container():
                 unsafe_allow_html=True
             )
 
-            # Escape the email template for JavaScript
-            escaped_template = custom_template.replace("`", "\\`").replace("\n", "\\n").replace('"', '\\"')
-
-            # Add a "Copy email template" button with corrected single quotes
+            # Display the "Copy email template" button which calls the JS function
             st.markdown(
-                f'<button class="copy-button" onclick="copyToClipboard(\'{escaped_template}\')">Copy email template</button>',
+                '<button class="copy-button" onclick="copyTemplate()">Copy email template</button>',
                 unsafe_allow_html=True
             )
 
-            # Display the custom email template
+            # Display the custom email template text (this text will be copied when the button is clicked)
             st.markdown(
                 f'<div class="custom-template">{custom_template}</div>',
                 unsafe_allow_html=True
