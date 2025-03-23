@@ -179,7 +179,7 @@ with st.container():
             st.markdown(
                 """
                 <div class="description-container">
-                    Having trouble using the pre-filled email link above? Copy and paste this template instead:
+                    Having trouble using the pre-filled email link above?<br>Copy and paste this template instead:
                 </div>
                 """,
                 unsafe_allow_html=True
