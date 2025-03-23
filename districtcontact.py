@@ -103,49 +103,10 @@ st.markdown(
         font-family: monospace;
         white-space: pre-wrap;
     }
-    .copy-button {
-        background-color: #0c343d;
-        color: #ffffff;
-        padding: 10px 20px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-    .copy-button:hover {
-        background-color: #0a2a32;
-    }
     </style>
     """,
     unsafe_allow_html=True
 )
-
-# JavaScript for copying the template from the displayed element
-copy_js = """
-<script>
-function copyTemplate() {
-    // Find the element containing the custom template text
-    const templateElement = document.querySelector('.custom-template');
-    if (templateElement) {
-        const text = templateElement.innerText;
-        // Create a temporary textarea element to facilitate copying
-        const textarea = document.createElement("textarea");
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textarea);
-        alert("Email template copied to clipboard!");
-    } else {
-        alert("Template not found!");
-    }
-}
-</script>
-"""
-
-# Inject JavaScript into the Streamlit app
-st.markdown(copy_js, unsafe_allow_html=True)
 
 # Page header
 with st.container():
@@ -224,13 +185,7 @@ with st.container():
                 unsafe_allow_html=True
             )
 
-            # Display the "Copy email template" button which calls the JS function
-            st.markdown(
-                '<button class="copy-button" onclick="copyTemplate()">Copy email template</button>',
-                unsafe_allow_html=True
-            )
-
-            # Display the custom email template text (this text will be copied when the button is clicked)
+            # Display the custom email template text
             st.markdown(
                 f'<div class="custom-template">{custom_template}</div>',
                 unsafe_allow_html=True
