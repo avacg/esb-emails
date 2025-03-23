@@ -217,7 +217,7 @@ with st.container():
             )
 
             # Properly Escape the email template for JavaScript
-            escaped_template = custom_template.replace('\n', '\\n').replace('\r', '\\r').replace('"', '\\"').replace("'", "\\'")
+            escaped_template = custom_template.replace('\n', '\\\\n').replace('\r', '\\\\r').replace('"', '\\"').replace("'", "\\'")
 
             # Add a "Copy email template" button
             st.markdown(
@@ -226,8 +226,7 @@ with st.container():
             )
 
             # Display the custom email template
-            st.markdown(
-                f'<div class="custom-template">{custom_template}</div>',
+            st.markdownf'<div class="custom-template">{custom_template}</div>',
                 unsafe_allow_html=True
             )
 
