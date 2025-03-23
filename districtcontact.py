@@ -125,7 +125,6 @@ st.markdown(
 copy_js = """
 <script>
 function copyToClipboard(text) {
-    // Create a temporary textarea element
     const textarea = document.createElement("textarea");
     textarea.value = text;
     document.body.appendChild(textarea);
@@ -180,11 +179,11 @@ with st.container():
 # Main content container
 with st.container():
     st.markdown('<div class="content-container">', unsafe_allow_html=True)
-    
+
     # Create a dropdown menu
     default_text = "Choose or type your school district"
     options = [default_text] + df['School or District'].tolist()
-    
+
     selected_district = st.selectbox(
         "Select your school or district:",
         options,
@@ -192,70 +191,44 @@ with st.container():
     )
 
     # Display the result
-# In the "Main content container" section, replace the button and template code with:
+    if selected_district and selected_district != default_text:
+        row = df[df['School or District'] == selected_district]
+        if not row.empty:
+            mailto_link = row['Having trouble with the link on the left? Paste this into your browser instead.'].iloc[0]
+            link_text = row['Link Text'].iloc[0]
+            custom_template = row['Custom Email Template'].iloc[0]  # Assuming column I is named 'Custom Email Template'
 
-if selected_district and selected_district != default_text:
-    row = df[df['School or District'] == selected_district]
-    if not row.empty:
-        mailto_link = row['Having trouble with the link on the left? Paste this into your browser instead.'].iloc[0]
-        link_text = row['Link Text'].iloc[0]
-        custom_template = row['Custom Email Template'].iloc[0]
+            # Display the email button
+            st.markdown(
+                f'<div class="email-button-container">'
+                f'<a href="{mailto_link}" class="email-button">{link_text}</a>'
+                '</div>',
+                unsafe_allow_html=True
+            )
 
-        # Display the email button
-        st.markdown(
-            f'<div class="email-button-container">'
-            f'<a href="{mailto_link}" class="email-button">{link_text}</a>'
-            '</div>',
-            unsafe_allow_html=True
-        )
+            # Display the custom email template section
+            st.markdown(
+                """
+                <div class="description-container">
+                    Having trouble using the pre-filled email link above? Here's a customized template you can copy and paste into a new email manually:
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
-        # Display the custom email template section
-        st.markdown(
-            """
-            <div class="description-container">
-                Having trouble using the pre-filled email link above? Here's a customized template you can copy and paste into a new email manually:
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+            # Properly Escape the email template for JavaScript
+            escaped_template = json.dumps(custom_template) # use json.dumps to handle all special characters correctly.
 
-        # Create a hidden div to store the template
-        st.markdown(
-            f'<div id="email-template" style="display:none;">{custom_template}</div>',
-            unsafe_allow_html=True
-        )
+            # Add a "Copy email template" button
+            st.markdown(
+                f'<button class="copy-button" onclick="copyToClipboard({escaped_template})">Copy email template</button>',
+                unsafe_allow_html=True
+            )
 
-        # Copy button with JavaScript
-        copy_button = """
-        <script>
-        function handleCopy() {
-            const template = document.getElementById("email-template").innerText;
-            navigator.clipboard.writeText(template).then(() => {
-                alert("Email template copied to clipboard!");
-            }).catch(err => {
-                alert("Failed to copy: " + err);
-            });
-        }
-        </script>
-        <button class="copy-button" onclick="handleCopy()">Copy email template</button>
-        """
-        st.markdown(copy_button, unsafe_allow_html=True)
+            # Display the custom email template
+            st.markdown(
+                f'<div class="custom-template">{custom_template}</div>',
+                unsafe_allow_html=True
+            )
 
-        # Display the visible template
-        st.markdown(
-            f'<div class="custom-template">{custom_template}</div>',
-            unsafe_allow_html=True
-        )
-    
-    st.markdown('</div>', unsafe_allow_html=True)  # Close content container
-
-# Footer
-with st.container():
-    st.markdown(
-        """
-        <div class="description-container">
-            🚌🚌🚌
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown('</div>', unsafe_allow_html=True)  # Close
