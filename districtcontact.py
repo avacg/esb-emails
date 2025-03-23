@@ -215,7 +215,7 @@ with st.container():
 
             # Add a "Copy email template" button
             st.markdown(
-                f'<button class="copy-button" onclick="copyToClipboard(`{custom_template}`)">Copy email template</button>',
+                f'<button class="copy-button" onclick="copyToClipboard(`{custom_template.replace("`", "\\`")}`)">Copy email template</button>',
                 unsafe_allow_html=True
             )
 
