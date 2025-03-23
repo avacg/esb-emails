@@ -125,11 +125,14 @@ st.markdown(
 copy_js = """
 <script>
 function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
-        alert('Email template copied to clipboard!');
-    }, function(err) {
-        alert('Failed to copy: ' + err);
-    });
+    // Create a temporary textarea element
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    alert("Email template copied to clipboard!");
 }
 </script>
 """
@@ -215,7 +218,7 @@ with st.container():
             )
 
             # Escape the email template for JavaScript
-            escaped_template = json.dumps(custom_template).strip('"')
+            escaped_template = custom_template.replace("`", "\\`").replace("\n", "\\n").replace('"', '\\"')
 
             # Add a "Copy email template" button
             st.markdown(
