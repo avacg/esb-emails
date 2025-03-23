@@ -19,7 +19,8 @@ except Exception as e:
     df = pd.DataFrame({
         'School or District': [],
         'Having trouble with the link on the left? Paste this into your browser instead.': [],
-        'Link Text': []
+        'Link Text': [],
+        'Custom Email Template': []  # Assuming column I is named 'Custom Email Template'
     })
 
 # Custom CSS for styling
@@ -94,6 +95,14 @@ st.markdown(
         margin-top: 30px;  /* Adjusted margin */
         flex-wrap: wrap;
     }
+    .custom-template {
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-family: monospace;
+        white-space: pre-wrap;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -157,14 +166,33 @@ with st.container():
         if not row.empty:
             mailto_link = row['Having trouble with the link on the left? Paste this into your browser instead.'].iloc[0]
             link_text = row['Link Text'].iloc[0]
+            custom_template = row['Custom Email Template'].iloc[0]  # Assuming column I is named 'Custom Email Template'
+            
+            # Display the email button
             st.markdown(
                 f'<div class="email-button-container">'
                 f'<a href="{mailto_link}" class="email-button">{link_text}</a>'
                 '</div>',
                 unsafe_allow_html=True
             )
+            
+            # Display the custom email template section
+            st.markdown(
+                """
+                <div class="description-container">
+                    Having trouble using the pre-filled email link above? Here's a customized template you can copy and paste into a new email manually:
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                f'<div class="custom-template">{custom_template}</div>',
+                unsafe_allow_html=True
+            )
     
     st.markdown('</div>', unsafe_allow_html=True)  # Close content container
+
+# Footer
 with st.container():
     st.markdown(
         """
