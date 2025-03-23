@@ -241,4 +241,5 @@ with st.container():
             🚌🚌🚌
         </div>
         """,
-        unsafe_allow
+        unsafe_allow_html=True
+    )
