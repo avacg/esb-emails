@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import json  # For escaping the email template
 
 # Google Sheet URL
 sheet_url = "https://docs.google.com/spreadsheets/d/1wi7E8m37I3bAdDiqJRa1lsR2qmWhKXOL5kL2v0jEbqc/edit?usp=sharing"
@@ -213,9 +214,12 @@ with st.container():
                 unsafe_allow_html=True
             )
 
+            # Escape the email template for JavaScript
+            escaped_template = json.dumps(custom_template).strip('"')
+
             # Add a "Copy email template" button
             st.markdown(
-                f'<button class="copy-button" onclick="copyToClipboard(`{custom_template.replace("`", "\\`")}`)">Copy email template</button>',
+                f'<button class="copy-button" onclick="copyToClipboard(`{escaped_template}`)">Copy email template</button>',
                 unsafe_allow_html=True
             )
 
